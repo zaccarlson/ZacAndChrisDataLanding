@@ -20,9 +20,9 @@ pr:
       - .ado/workflows/dataLandingZoneDeployment.yml
 
 variables:
-  AZURE_RESOURCE_MANAGER_CONNECTION_NAME: "data-landing-zone-001-service-connection" # Update to '{resourceManagerConnectionName}'
-  AZURE_SUBSCRIPTION_ID: "2150d511-458f-43b9-8691-6819ba2e6c7b"                      # Update to '{dataLandingZoneSubscriptionId}'
-  AZURE_LOCATION: "northeurope"                                                      # Update to '{regionName}'
+  AZURE_RESOURCE_MANAGER_CONNECTION_NAME: "ZacMsdnSubscription" # Update to '{resourceManagerConnectionName}'
+  AZURE_SUBSCRIPTION_ID: "fa7c2e05-ff8d-4651-9586-3d39bdcd6a7d"                      # Update to '{dataLandingZoneSubscriptionId}'
+  AZURE_LOCATION: "eastus"                                                      # Update to '{regionName}'
 
 stages:
   - stage: Validation
@@ -31,8 +31,7 @@ stages:
       - job: Validation
         displayName: 'Validation of IaC templates'
         continueOnError: false
-        pool:
-          vmImage: 'ubuntu-latest'
+        pool: default
         
         steps:
           # Checkout code
@@ -113,8 +112,7 @@ stages:
       - job: Deployment
         displayName: 'Deployment of IaC templates'
         continueOnError: false
-        pool:
-          vmImage: 'ubuntu-latest'
+        pool: default
         
         steps:
           # Checkout code
